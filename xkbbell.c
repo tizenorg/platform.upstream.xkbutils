@@ -24,7 +24,7 @@ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ********************************************************/
-/* $XFree86: xc/programs/xkbutils/xkbbell.c,v 1.5 2001/04/01 14:00:22 tsi Exp $ */
+/* $XFree86$ */
 
 #include <stdio.h>
 #include <string.h>
