@@ -24,7 +24,9 @@
  THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
  ********************************************************/
+/* $XFree86: xc/programs/xkbutils/xkbvleds.c,v 3.5 2001/04/01 14:00:22 tsi Exp $ */
 
+#include <stdlib.h>
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -62,8 +64,7 @@ static	char *		inDpyName;
 /***====================================================================***/
 
 static void
-usage(program)
-    char *	program;
+usage(char *program)
 {
     uInformation("Usage: %s <options>\n",program);
     uInformation("Legal options include the usual X toolkit options plus:\n");
@@ -82,9 +83,7 @@ usage(program)
 }
 
 static Bool
-parseArgs(argc,argv)
-    int		argc;
-    char *	argv[];
+parseArgs(int argc, char *argv[])
 {
 register int 	i;
 
@@ -152,10 +151,8 @@ register int 	i;
 
 /***====================================================================***/
 
-Display *
-GetDisplay(program,dpyName)
-    char *	program;
-    char *	dpyName;
+static Display *
+GetDisplay(char *program, char *dpyName)
 {
 int		mjr,mnr,error;
 Display	*	dpy;
@@ -195,9 +192,7 @@ Display	*	dpy;
 /***====================================================================***/
 
 int
-main(argc,argv)
-    int		argc;
-    char *	argv[];
+main(int argc, char *argv[])
 {
 Widget		toplevel;
 XtAppContext	app_con;
@@ -208,14 +203,17 @@ unsigned	bit;
 unsigned	n;
 XkbDescPtr	xkb;
 XkbEvent	ev;
-static Arg	boxArgs[]= { XtNorientation, (XtArgVal)XtorientHorizontal };
-static Arg	onArgs[]=  { XtNon, (XtArgVal)True };
-static Arg	offArgs[]=  { XtNon, (XtArgVal)False };
+static Arg	boxArgs[]= {{ XtNorientation, (XtArgVal)XtorientHorizontal }};
+static Arg	onArgs[]=  {{ XtNon, (XtArgVal)True }};
+static Arg	offArgs[]=  {{ XtNon, (XtArgVal)False }};
 static char *	fallback_resources[] = {
     "*Box*background: grey40",
     NULL
 };
 
+    uSetEntryFile(NullString);
+    uSetDebugFile(NullString);
+    uSetErrorFile(NullString);
     bzero(leds,XkbNumIndicators*sizeof(Widget));
     toplevel = XtOpenApplication(&app_con, "XkbLEDPanel", NULL, 0, &argc, argv, 
 				 fallback_resources,
@@ -352,7 +350,7 @@ static char *	fallback_resources[] = {
 	}
 	else XtDispatchEvent(&ev.core);
     }
-BAIL:
+/* BAIL: */
     if (inDpy) 
 	XCloseDisplay(inDpy);
     if (outDpy!=inDpy)

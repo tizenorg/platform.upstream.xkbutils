@@ -24,7 +24,9 @@
  THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
  ********************************************************/
+/* $XFree86: xc/programs/xkbutils/xkbwatch.c,v 3.5 2001/04/01 14:00:22 tsi Exp $ */
 
+#include <stdlib.h>
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -44,22 +46,11 @@
 /***====================================================================***/
 
 	Display *	inDpy,*outDpy;
-static	unsigned long	wanted= 0xff;
 	int		evBase,errBase;
 	Bool		synch;
 
 /***====================================================================***/
 
-struct _resource {
-	char *	inDpyName;
-};
-
-#define offset(field)	XtOffsetOf(struct _resource, field)
-static XtResource app_resources[] = {
-    {"inputDisplay", "InputDisplay", XtRString, sizeof(char *),
-	offset(inDpyName), XtRString, NULL }
-};
-#undef offset
 
 static XrmOptionDescRec options[] = {
 {"-off",	"*on.on",		XrmoptionNoArg,		"FALSE"},
@@ -68,52 +59,8 @@ static XrmOptionDescRec options[] = {
 
 /***====================================================================***/
 
-Display *
-GetDisplay(program,dpyName)
-    char *	program;
-    char *	dpyName;
-{
-int		mjr,mnr,error;
-Display	*	dpy;
-
-    mjr= XkbMajorVersion;
-    mnr= XkbMinorVersion;
-    dpy= XkbOpenDisplay(dpyName,&evBase,&errBase,&mjr,&mnr,&error);
-    if (dpy==NULL) {
-	switch (error) {
-	    case XkbOD_BadLibraryVersion:
-		uInformation("%s was compiled with XKB version %d.%02d\n",
-				program,XkbMajorVersion,XkbMinorVersion);
-		uError("X library supports incompatible version %d.%02d\n",
-				mjr,mnr);
-		break;
-	    case XkbOD_ConnectionRefused:
-		uError("Cannot open display \"%s\"\n",dpyName);
-		break;
-	    case XkbOD_NonXkbServer:
-		uError("XKB extension not present on %s\n",dpyName);
-		break;
-	    case XkbOD_BadServerVersion:
-		uInformation("%s was compiled with XKB version %d.%02d\n",
-				program,XkbMajorVersion,XkbMinorVersion);
-		uError("Server %s uses incompatible version %d.%02d\n",
-				dpyName,mjr,mnr);
-		break;
-	    default:
-		uInternalError("Unknown error %d from XkbOpenDisplay\n",error);
-	}
-    }
-    else if (synch)
-	XSynchronize(dpy,True);
-    return dpy;
-}
-
-/***====================================================================***/
-
 int
-main(argc,argv)
-    int		argc;
-    char *	argv[];
+main(int argc, char *argv[])
 {
 Widget		toplevel;
 XtAppContext	app_con;
@@ -128,10 +75,10 @@ register int	i;
 unsigned	bit;
 XkbEvent	ev;
 XkbStateRec	state;
-static Arg	hArgs[]= { XtNorientation, (XtArgVal)XtorientHorizontal	};
-static Arg	vArgs[]= { XtNorientation, (XtArgVal)XtorientVertical };
-static Arg	onArgs[]=  { XtNon, (XtArgVal)True };
-static Arg	offArgs[]=  { XtNon, (XtArgVal)False };
+static Arg	hArgs[]= {{ XtNorientation, (XtArgVal)XtorientHorizontal }};
+static Arg	vArgs[]= {{ XtNorientation, (XtArgVal)XtorientVertical }};
+static Arg	onArgs[]=  {{ XtNon, (XtArgVal)True }};
+static Arg	offArgs[]=  {{ XtNon, (XtArgVal)False }};
 static char *	fallback_resources[] = {
     "*Box*background: grey50",
     "*Box*borderWidth: 0",
@@ -139,6 +86,9 @@ static char *	fallback_resources[] = {
     NULL
 };
 
+    uSetEntryFile(NullString);
+    uSetDebugFile(NullString);
+    uSetErrorFile(NullString);
     toplevel = XtOpenApplication(&app_con, "XkbWatch",
 				 options, XtNumber(options), &argc, argv, 
 				 fallback_resources,
@@ -273,7 +223,7 @@ static char *	fallback_resources[] = {
 	}
 	else XtDispatchEvent(&ev.core);
     }
-BAIL:
+/* BAIL: */
     if (inDpy) 
 	XCloseDisplay(inDpy);
     if (outDpy!=inDpy)

@@ -24,8 +24,10 @@ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION  WITH
 THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ********************************************************/
+/* $XFree86: xc/programs/xkbutils/xkbbell.c,v 1.5 2001/04/01 14:00:22 tsi Exp $ */
 
 #include <stdio.h>
+#include <string.h>
 #include <X11/Xproto.h>
 #include <X11/Xlib.h>
 #include <X11/X.h>
@@ -44,10 +46,8 @@ static	int		 win = None;
 static	int		 force = 0;
 static	int		 nobeep = 0;
 
-int
-parseArgs(argc,argv)
-    int argc;
-    char *argv[];
+static int
+parseArgs(int argc, char *argv[])
 {
 int i;
 
@@ -146,9 +146,7 @@ int i;
 }
 
 int
-main(argc,argv)
-    int argc;
-    char *argv[];
+main(int argc, char *argv[])
 {
 Display	*dpy;
 int	i1,i2,i3,i4,i5;
@@ -219,7 +217,7 @@ int	i1,i2,i3,i4,i5;
 	if (!ok)
 	    fprintf(stderr,"XkbDeviceBell request failed\n");
     }
-BAIL:
+/* BAIL: */
     XCloseDisplay(dpy);
     return 0;
 }
