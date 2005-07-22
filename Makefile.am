@@ -23,7 +23,7 @@ bin_PROGRAMS = xkbvleds xkbwatch xkbbell
 
 # xkbvleds
 
-xkbvleds_SOURCES = xkbvleds.c LED.c LED.h LEDP.h utils.c
+xkbvleds_SOURCES = xkbvleds.c LED.c LED.h LEDP.h utils.c utils.h
 
 xkbvleds_CFLAGS = $(XKBVLEDS_CFLAGS)
 xkbvleds_LDADD = $(XKBVLEDS_LIBS)
@@ -37,6 +37,6 @@ xkbbell_LDADD = $(XKBBELL_LIBS)
 
 # xkbwatch
 
-xkbwatch_SOURCES = xkbwatch.c LED.c LED.h LEDP.h utils.c
+xkbwatch_SOURCES = xkbwatch.c LED.c LED.h LEDP.h utils.c utils.h
 xkbwatch_CFLAGS = $(XKBWATCH_CFLAGS)
 xkbwatch_LDADD = $(XKBWATCH_LIBS)
