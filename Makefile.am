@@ -41,7 +41,7 @@ xkbwatch_SOURCES = xkbwatch.c LED.c LED.h LEDP.h utils.c utils.h
 xkbwatch_CFLAGS = $(XKBWATCH_CFLAGS)
 xkbwatch_LDADD = $(XKBWATCH_LIBS)
 
-EXTRA_DIST += ChangeLog
+EXTRA_DIST = ChangeLog
 MAINTAINERCLEANFILES = ChangeLog
 
 .PHONY: ChangeLog
