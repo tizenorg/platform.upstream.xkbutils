@@ -31,6 +31,8 @@
 #include	<ctype.h>
 #include	<stdlib.h>
 
+unsigned int debugFlags;
+
 /***====================================================================***/
 
 Opaque
