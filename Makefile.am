@@ -21,24 +21,26 @@
 
 bin_PROGRAMS = xkbvleds xkbwatch xkbbell
 
+AM_CFLAGS = $(CWARNFLAGS)
+
 # xkbvleds
 
 xkbvleds_SOURCES = xkbvleds.c LED.c LED.h LEDP.h utils.c utils.h
 
-xkbvleds_CFLAGS = $(XKBVLEDS_CFLAGS)
+xkbvleds_CFLAGS = $(XKBVLEDS_CFLAGS) $(AM_CFLAGS)
 xkbvleds_LDADD = $(XKBVLEDS_LIBS)
 
 # xkbbell
 
 xkbbell_SOURCES = xkbbell.c
 
-xkbbell_CFLAGS = $(XKBBELL_CFLAGS)
+xkbbell_CFLAGS = $(XKBBELL_CFLAGS) $(AM_CFLAGS)
 xkbbell_LDADD = $(XKBBELL_LIBS)
 
 # xkbwatch
 
 xkbwatch_SOURCES = xkbwatch.c LED.c LED.h LEDP.h utils.c utils.h
-xkbwatch_CFLAGS = $(XKBWATCH_CFLAGS)
+xkbwatch_CFLAGS = $(XKBWATCH_CFLAGS) $(AM_CFLAGS)
 xkbwatch_LDADD = $(XKBWATCH_LIBS)
 
 # Man pages
@@ -56,6 +58,8 @@ MAINTAINERCLEANFILES = ChangeLog
 XORGRELSTRING = @PACKAGE_STRING@
   XORGMANNAME = X Version 11
 
+SED = sed
+
 MAN_SUBSTS = \
 	-e 's|__vendorversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
 	-e 's|__xorgversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
@@ -72,7 +76,7 @@ MAN_SUBSTS = \
 SUFFIXES = .$(APP_MAN_SUFFIX) .man
 
 .man.$(APP_MAN_SUFFIX):
-	sed $(MAN_SUBSTS) < $< > $@
+	$(AM_V_GEN)$(SED) $(MAN_SUBSTS) < $< > $@
 
 .PHONY: ChangeLog
 
