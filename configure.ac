@@ -40,7 +40,7 @@ AM_PROG_CC_C_O
 PKG_CHECK_MODULES(XKBVLEDS, xaw7)
 
 # xkbbell checks
-PKG_CHECK_MODULES(XKBBELL, xkbfile x11 inputproto)
+PKG_CHECK_MODULES(XKBBELL, xproto inputproto x11)
 
 # xkbwatch checks
 PKG_CHECK_MODULES(XKBWATCH, xaw7)
