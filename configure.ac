@@ -37,12 +37,12 @@ AM_CONFIG_HEADER(config.h)
 AM_PROG_CC_C_O
 
 # xkbvleds checks
-PKG_CHECK_MODULES(XKBVLEDS, xaw7)
+PKG_CHECK_MODULES(XKBVLEDS, xproto xaw7 xt x11)
 
 # xkbbell checks
 PKG_CHECK_MODULES(XKBBELL, xproto inputproto x11)
 
 # xkbwatch checks
-PKG_CHECK_MODULES(XKBWATCH, xaw7)
+PKG_CHECK_MODULES(XKBWATCH, xproto xaw7 xt x11)
 
 AC_OUTPUT([Makefile])
