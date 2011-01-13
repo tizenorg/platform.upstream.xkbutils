@@ -60,7 +60,7 @@ suppress server bell, event only
 specifies which bell feedback to use
 .PP
 .TP 8
-.B \-kf <id> 
+.B \-kf <id>
 specifies which keyboard feedback to use
 .PP
 .TP 8
@@ -71,5 +71,5 @@ specifies which volume to use
 .B \-w <id>
 specifies which  window to use
 .PP
-If neither device nor feedback are specified, xkbbell uses the default values 
+If neither device nor feedback are specified, xkbbell uses the default values
 for the core keyboard device.

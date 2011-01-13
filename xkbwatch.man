@@ -22,5 +22,5 @@
 .SH NAME
 xkbwatch - XKB extension user utility
 .SH DESCRIPTION
-This program reports changes in the fundamental components of the XKB keyboard 
+This program reports changes in the fundamental components of the XKB keyboard
 state plus the effective compatibility state.
