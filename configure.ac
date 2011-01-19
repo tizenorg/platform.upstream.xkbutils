@@ -46,4 +46,7 @@ PKG_CHECK_MODULES(XKBBELL, xproto inputproto x11)
 # xkbwatch checks
 PKG_CHECK_MODULES(XKBWATCH, xproto xaw7 xt x11)
 
-AC_OUTPUT([Makefile])
+AC_CONFIG_FILES([
+	Makefile
+	man/Makefile])
+AC_OUTPUT
