@@ -245,8 +245,8 @@ SetValues(Widget current, Widget request, Widget new,
 	|| curlw->core.background_pixel != newlw->core.background_pixel 
 	|| curlw->led.on_color		!= newlw->led.on_color
 	|| curlw->led.off_color		!= newlw->led.off_color
-	|| curlw->core.width		!= curlw->core.width
-	|| curlw->core.height		!= curlw->core.height) {
+	|| curlw->core.width		!= newlw->core.width
+	|| curlw->core.height		!= newlw->core.height) {
 	GetPixmaps(newlw);
 	changed= TRUE;
     }
