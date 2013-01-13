@@ -24,7 +24,12 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ********************************************************/
 
+#ifdef HAVE_CONFIG_H
+# include       "config.h"
+#endif
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <X11/Xproto.h>
 #include <X11/Xlib.h>
@@ -62,6 +67,10 @@ parseArgs(int argc, char *argv[])
         else if ((strcmp(argv[i], "-help") == 0) ||
                  (strcmp(argv[i], "-usage") == 0)) {
             return 0;
+        }
+        else if (strcmp(argv[i], "-version") == 0) {
+            printf("xkbbell (%s) %s\n", PACKAGE_NAME, PACKAGE_VERSION);
+            exit(0);
         }
         else if (strcmp(argv[i], "-synch") == 0) {
             synch = 1;
@@ -160,6 +169,7 @@ main(int argc, char *argv[])
         fprintf(stderr, "Where legal options are:\n"
                 "-help              print this message\n"
                 "-usage             print this message\n"
+                "-version           print the program version\n"
                 "-display <dpy>     specifies display to use\n"
                 "-synch             turn on synchronization\n"
                 "-dev <id>          specifies device to use\n"

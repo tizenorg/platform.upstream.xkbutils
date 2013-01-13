@@ -32,6 +32,7 @@ xkbbell - XKB extension user utility
 [-kf <id>]
 [-v <volume>]
 [-w <id>]
+[-help|-version]
 .SH DESCRIPTION
 user utility
 .SH OPTIONS
@@ -70,6 +71,14 @@ specifies which volume to use
 .TP 8
 .B \-w <id>
 specifies which  window to use
+.PP
+.TP 8
+.B \-help
+print list of options and exit
+.PP
+.TP 8
+.B \-version
+print program version and exit
 .PP
 If neither device nor feedback are specified, xkbbell uses the default values
 for the core keyboard device.

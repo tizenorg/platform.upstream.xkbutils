@@ -79,6 +79,13 @@ main(int argc, char *argv[])
         NULL
     };
 
+    for (i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "-version") == 0) {
+            printf("xkbwatch (%s) %s\n", PACKAGE_NAME, PACKAGE_VERSION);
+            exit(0);
+        }
+    }
+
     uSetErrorFile(NullString);
     toplevel = XtOpenApplication(&app_con, "XkbWatch",
                                  options, XtNumber(options), &argc, argv,

@@ -73,5 +73,11 @@ Watch only LEDs in all desired sets
 .TP 8
 .B \-union
 Watch LEDs in any desired sets
-
-
+.PP
+.TP 8
+.B \-help
+print list of options and exit
+.PP
+.TP 8
+.B \-version
+print program version and exit

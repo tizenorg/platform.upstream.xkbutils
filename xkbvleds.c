@@ -64,6 +64,7 @@ usage(char *program)
     uInformation("Usage: %s <options>\n", program);
     uInformation("Legal options include the usual X toolkit options plus:\n"
                  "  -help           Print this message\n"
+                 "  -version        Print the program version\n"
                  "  -indpy <name>   Name of display to watch\n"
                  "  -watch <leds>   Mask of LEDs to watch\n"
                  "  [-+]automatic   (Don't) watch automatic LEDs\n"
@@ -116,6 +117,10 @@ parseArgs(int argc, char *argv[])
         }
         else if (uStrCaseEqual(argv[i], "-help")) {
             usage(argv[0]);
+            exit(0);
+        }
+        else if (uStrCaseEqual(argv[i], "-version")) {
+            printf("xkbvleds (%s) %s\n", PACKAGE_NAME, PACKAGE_VERSION);
             exit(0);
         }
         else if ((argv[i][0] == '+') || (argv[i][0] == '-')) {
