@@ -4,10 +4,10 @@
   /*\
    * $Xorg: utils.h,v 1.3 2000/08/17 19:54:51 cpqbld Exp $
    *
-   *		              COPYRIGHT 1990
-   *		        DIGITAL EQUIPMENT CORPORATION
-   *		           MAYNARD, MASSACHUSETTS
-   *			    ALL RIGHTS RESERVED.
+   *                          COPYRIGHT 1990
+   *                    DIGITAL EQUIPMENT CORPORATION
+   *                       MAYNARD, MASSACHUSETTS
+   *                        ALL RIGHTS RESERVED.
    *
    * THE INFORMATION IN THIS SOFTWARE IS SUBJECT TO CHANGE WITHOUT NOTICE AND
    * SHOULD NOT BE CONSTRUED AS A COMMITMENT BY DIGITAL EQUIPMENT CORPORATION.
@@ -40,7 +40,6 @@
 
 _XFUNCPROTOBEGIN
 
-
 #ifndef NUL
 #define	NUL	'\0'
 #endif
@@ -48,24 +47,24 @@ _XFUNCPROTOBEGIN
 /***====================================================================***/
 
 #ifndef OPAQUE_DEFINED
-typedef	void *Opaque;
+typedef void *Opaque;
 #endif
 #ifndef NullOpaque
 #define	NullOpaque	((Opaque)NULL)
 #endif
 
 #ifndef BOOLEAN_DEFINED
-typedef	char	Boolean;
+typedef char Boolean;
 #endif
 
 #ifndef True
 #define	True	((Boolean)1)
 #define	False	((Boolean)0)
-#endif /* ndef True */
+#endif                          /* ndef True */
 #define	booleanText(b)	((b)?"True":"False")
 
 #ifndef COMPARISON_DEFINED
-typedef	int		Comparison;
+typedef int Comparison;
 
 #define	Greater		((Comparison)1)
 #define	Equal		((Comparison)0)
@@ -76,35 +75,29 @@ typedef	int		Comparison;
 
 #ifdef notyet
 typedef union {
-	int		 i;
-	unsigned	 u;
-	void		*p;
-	void		*(*fp)(); 
+    int i;
+    unsigned u;
+    void *p;
+    void *(*fp) ();
 } Union;
 #endif
 
 /***====================================================================***/
 
-extern	Opaque	uAlloc(
-    unsigned	/* size */
-);
-extern	Opaque	uCalloc(
-    unsigned	/* n */,
-    unsigned	/* size */
-);
-extern	Opaque	uRealloc(
-    Opaque	/* old */,
-    unsigned	/* newSize */
-);
-extern	Opaque	uRecalloc(
-    Opaque 	/* old */,
-    unsigned	/* nOld */,
-    unsigned	/* nNew */,
-    unsigned 	/* newSize */
-);
-extern	void	uFree(
-    Opaque	/* ptr */
-);
+extern Opaque uAlloc(unsigned    /* size */);
+
+extern Opaque uCalloc(unsigned   /* n */,
+                      unsigned   /* size */);
+
+extern Opaque uRealloc(Opaque    /* old */,
+                       unsigned  /* newSize */);
+
+extern Opaque uRecalloc(Opaque   /* old */,
+                        unsigned /* nOld */,
+                        unsigned /* nNew */,
+                        unsigned /* newSize */);
+
+extern void uFree(Opaque         /* ptr */);
 
 #define	uTypedAlloc(t)		((t *)uAlloc((unsigned)sizeof(t)))
 #define	uTypedCalloc(n,t)	((t *)uCalloc((unsigned)n,(unsigned)sizeof(t)))
@@ -120,13 +113,13 @@ extern	void	uFree(
 
 /***====================================================================***/
 
-extern Boolean uSetErrorFile ( char *name );
-extern void uInformation ( char *s, ...);
-extern void uAction ( char *s, ... );
-extern void uWarning ( char *s, ... );
-extern void uError ( char *s, ... );
-extern void uFatalError(char *s,...);
-extern void uInternalError ( char *s, ... );
+extern Boolean uSetErrorFile(char *name);
+extern void uInformation(char *s, ...);
+extern void uAction(char *s, ...);
+extern void uWarning(char *s, ...);
+extern void uError(char *s, ...);
+extern void uFatalError(char *s, ...);
+extern void uInternalError(char *s, ...);
 
 /***====================================================================***/
 
@@ -141,21 +134,16 @@ extern void uInternalError ( char *s, ... );
 #define	uStrCaseCmp(s1,s2)	(strcasecmp(s1,s2))
 #define	uStrCasePrefix(p,s)	(strncasecmp(p,s,strlen(p))==0)
 #else
-extern	int uStrCaseCmp(
-	char *	/* s1 */,
-	char *	/* s2 */
-);
-extern	int uStrCasePrefix(
-	char *	/* p */,
-	char *	/* str */
-);
+extern int uStrCaseCmp(char *   /* s1 */,
+                       char *   /* s2 */);
+
+extern int uStrCasePrefix(char * /* p */,
+                          char * /* str */);
 #endif
 #ifdef HAVE_STRDUP
 #define	uStringDup(s1)		(strdup(s1))
 #else
-extern	char *uStringDup(
-	char *	/* s1 */
-);
+extern char *uStringDup(char *  /* s1 */);
 #endif
 
 /***====================================================================***/
@@ -174,16 +162,16 @@ extern	char *uStringDup(
 #endif
 
 extern
-unsigned	int	DEBUG_VAR;
+unsigned int DEBUG_VAR;
 
-extern	void	uDebug( char *s, ... );
-extern	void	uDebugNOI( char *s, ... );	/* no indent */
-extern	Boolean	uSetDebugFile(
-    char *name
-);
-extern	FILE	*uDebugFile;
-extern	int	uDebugIndentLevel;
-extern	int	uDebugIndentSize;
+extern void uDebug(char *s, ...);
+extern void uDebugNOI(char *s, ...);    /* no indent */
+extern Boolean uSetDebugFile(char *name);
+
+extern FILE *uDebugFile;
+extern int uDebugIndentLevel;
+extern int uDebugIndentSize;
+
 #define	uDebugIndent(l)		(uDebugIndentLevel+=(l))
 #define	uDebugOutdent(l)	(uDebugIndentLevel-=(l))
 #ifdef DEBUG_ON
@@ -214,15 +202,13 @@ extern	int	uDebugIndentSize;
 #define	uDEBUG_NOI5(f,s,a,b,c,d,e)
 #endif
 
-extern	Boolean	uSetEntryFile(
-    char *name
-);
-extern	void	uEntry(int l, char *s, ... );
-extern	void	uExit(
-    int l,char *rtVal
-);
+extern Boolean uSetEntryFile(char *name);
 
-extern	int	uEntryLevel;
+extern void uEntry(int l, char *s, ...);
+extern void uExit(int l, char *rtVal);
+
+extern int uEntryLevel;
+
 #ifdef ENTRY_TRACKING_ON
 #define	ENTRY_BIT	0x10
 #define	LOW_ENTRY_BIT	0x1000
@@ -272,10 +258,7 @@ extern	int	uEntryLevel;
 #define	uFLAG_ENTRY7(f,s,a,b,c,d,e,g,h)
 #define	uFLAG_RETURN(v)			{ return(v);}
 #define	uFLAG_VOIDRETURN		{ return; }
-#endif 
+#endif
 
 _XFUNCPROTOEND
-
-#endif /* UTILS_H */
-
-
+#endif                          /* UTILS_H */

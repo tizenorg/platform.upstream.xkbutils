@@ -92,6 +92,7 @@
 extern WidgetClass ledWidgetClass;
 
 typedef struct _LEDClassRec *LEDWidgetClass;
-typedef struct _LEDRec      *LEDWidget;
 
-#endif /* _XawLED_h */
+typedef struct _LEDRec *LEDWidget;
+
+#endif                          /* _XawLED_h */
