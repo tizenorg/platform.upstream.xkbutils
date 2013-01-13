@@ -133,11 +133,6 @@ extern int uStrCaseCmp(const char *   /* s1 */,
 extern int uStrCasePrefix(const char * /* p */,
                           const char * /* str */);
 #endif
-#ifdef HAVE_STRDUP
-#define	uStringDup(s1)		(strdup(s1))
-#else
-extern char *uStringDup(const char *  /* s1 */);
-#endif
 
 /***====================================================================***/
 
