@@ -34,7 +34,6 @@
 #include <X11/Xaw/Cardinals.h>
 #include <X11/Xaw/Box.h>
 
-#define	OPAQUE_DEFINED
 #define	BOOLEAN_DEFINED
 #include "utils.h"
 #include "LED.h"
