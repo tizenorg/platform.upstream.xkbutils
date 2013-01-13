@@ -40,13 +40,13 @@ XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 
 # xkbvleds checks
-PKG_CHECK_MODULES(XKBVLEDS, xproto xaw7 xt x11)
+PKG_CHECK_MODULES(XKBVLEDS, [xproto >= 7.0.17 xaw7 xt x11])
 
 # xkbbell checks
-PKG_CHECK_MODULES(XKBBELL, xproto inputproto x11)
+PKG_CHECK_MODULES(XKBBELL, [xproto inputproto x11])
 
 # xkbwatch checks
-PKG_CHECK_MODULES(XKBWATCH, xproto xaw7 xt x11)
+PKG_CHECK_MODULES(XKBWATCH, [xproto >= 7.0.17 xaw7 xt x11])
 
 AC_CONFIG_FILES([
 	Makefile
