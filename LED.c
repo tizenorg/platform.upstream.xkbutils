@@ -33,10 +33,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-#ifdef CRAY
-#define WORD64
-#endif
-
 /****************************************************************
  *
  * Full class record constant
