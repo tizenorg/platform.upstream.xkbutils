@@ -103,12 +103,12 @@ extern void uFree(Opaque         /* ptr */);
 /***====================================================================***/
 
 extern Boolean uSetErrorFile(const char *name);
-extern void uInformation(const char *s, ...);
-extern void uAction(const char *s, ...);
-extern void uWarning(const char *s, ...);
-extern void uError(const char *s, ...);
-extern void uFatalError(const char *s, ...);
-extern void uInternalError(const char *s, ...);
+extern void uInformation(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
+extern void uAction(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
+extern void uWarning(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
+extern void uError(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
+extern void uFatalError(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
+extern void uInternalError(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
 
 /***====================================================================***/
 
@@ -153,8 +153,8 @@ extern char *uStringDup(const char *  /* s1 */);
 extern
 unsigned int DEBUG_VAR;
 
-extern void uDebug(const char *s, ...);
-extern void uDebugNOI(const char *s, ...);    /* no indent */
+extern void uDebug(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
+extern void uDebugNOI(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2); /* no indent */
 extern Boolean uSetDebugFile(const char *name);
 
 extern FILE *uDebugFile;
@@ -193,7 +193,7 @@ extern int uDebugIndentSize;
 
 extern Boolean uSetEntryFile(const char *name);
 
-extern void uEntry(int l, const char *s, ...);
+extern void uEntry(int l, const char *s, ...) _X_ATTRIBUTE_PRINTF(2,3);
 extern void uExit(int l, const char *rtVal);
 
 extern int uEntryLevel;
