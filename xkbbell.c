@@ -157,24 +157,22 @@ main(int argc, char *argv[])
 
     if (!parseArgs(argc, argv)) {
         fprintf(stderr, "Usage: %s [ <options> ] <name>\n", argv[0]);
-        fprintf(stderr, "Where legal options are:\n");
-        fprintf(stderr, "-help              print this message\n");
-        fprintf(stderr, "-usage             print this message\n");
-        fprintf(stderr, "-display <dpy>     specifies display to use\n");
-        fprintf(stderr, "-synch             turn on synchronization\n");
-        fprintf(stderr, "-dev <id>          specifies device to use\n");
-        fprintf(stderr, "-force             force audible bell\n");
+        fprintf(stderr, "Where legal options are:\n"
+                "-help              print this message\n"
+                "-usage             print this message\n"
+                "-display <dpy>     specifies display to use\n"
+                "-synch             turn on synchronization\n"
+                "-dev <id>          specifies device to use\n"
+                "-force             force audible bell\n"
+                "-nobeep            suppress server bell, event only\n"
+                "-bf <id>           specifies bell feedback to use\n"
+                "-kf <id>           specifies keyboard feedback to use\n"
+                "-v <volume>        specifies volume to use\n"
+                "-w <id>            specifies window to use\n");
         fprintf(stderr,
-                "-nobeep            suppress server bell, event only\n");
-        fprintf(stderr, "-bf <id>           specifies bell feedback to use\n");
-        fprintf(stderr,
-                "-kf <id>           specifies keyboard feedback to use\n");
-        fprintf(stderr, "-v <volume>        specifies volume to use\n");
-        fprintf(stderr, "-w <id>            specifies window to use\n");
-        fprintf(stderr,
-                "If neither device nor feedback are specified, %s uses the\n",
+                "If neither device nor feedback are specified, %s uses the\n"
+                "default values for the core keyboard device.\n",
                 argv[0]);
-        fprintf(stderr, "default values for the core keyboard device.\n");
         return 1;
     }
     dpy = XOpenDisplay(dpyName);

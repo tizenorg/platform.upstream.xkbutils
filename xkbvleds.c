@@ -62,18 +62,18 @@ static void
 usage(char *program)
 {
     uInformation("Usage: %s <options>\n", program);
-    uInformation("Legal options include the usual X toolkit options plus:\n");
-    uInformation("  -help           Print this message\n");
-    uInformation("  -indpy <name>   Name of display to watch\n");
-    uInformation("  -watch <leds>   Mask of LEDs to watch\n");
-    uInformation("  [-+]automatic   (Don't) watch automatic LEDs\n");
-    uInformation("  [-+]explicit    (Don't) watch explicit LEDs\n");
-    uInformation("  [-+]name        (Don't) watch named LEDs\n");
-    uInformation("  [-+]real        (Don't) watch real LEDs\n");
-    uInformation("  [-+]virtual     (Don't) watch virtual LEDs\n");
-    uInformation("  -intersection   Watch only LEDs in all desired sets\n");
-    uInformation("  -union          Watch LEDs in any desired sets\n");
-    uInformation("The default set of LEDs is -union +name +automatic +real\n");
+    uInformation("Legal options include the usual X toolkit options plus:\n"
+                 "  -help           Print this message\n"
+                 "  -indpy <name>   Name of display to watch\n"
+                 "  -watch <leds>   Mask of LEDs to watch\n"
+                 "  [-+]automatic   (Don't) watch automatic LEDs\n"
+                 "  [-+]explicit    (Don't) watch explicit LEDs\n"
+                 "  [-+]name        (Don't) watch named LEDs\n"
+                 "  [-+]real        (Don't) watch real LEDs\n"
+                 "  [-+]virtual     (Don't) watch virtual LEDs\n"
+                 "  -intersection   Watch only LEDs in all desired sets\n"
+                 "  -union          Watch LEDs in any desired sets\n"
+                 "The default set of LEDs is -union +name +automatic +real\n");
     return;
 }
 
