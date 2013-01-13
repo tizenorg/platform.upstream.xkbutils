@@ -29,6 +29,10 @@
 
 /***====================================================================***/
 
+#ifdef HAVE_CONFIG_H
+# include	"config.h"
+#endif
+
 #include 	<stdio.h>
 #include	<X11/Xos.h>
 #include	<X11/Xfuncproto.h>

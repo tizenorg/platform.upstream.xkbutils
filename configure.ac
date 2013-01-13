@@ -39,6 +39,8 @@ m4_ifndef([XORG_MACROS_VERSION],
 XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 
+AC_CHECK_FUNCS([strcasecmp])
+
 # xkbvleds checks
 PKG_CHECK_MODULES(XKBVLEDS, [xproto >= 7.0.17 xaw7 xt x11])
 
