@@ -31,10 +31,7 @@
 #include "LEDP.h"
 #include <stdio.h>
 #include <ctype.h>
-/* needed for abs() */
 #include <stdlib.h>
-
-#define streq(a,b) (strcmp( (a), (b) ) == 0)
 
 #ifdef CRAY
 #define WORD64
