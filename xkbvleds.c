@@ -339,7 +339,7 @@ main(int argc, char *argv[])
     XkbSelectEvents(inDpy, XkbUseCoreKbd, XkbIndicatorStateNotifyMask,
                     XkbIndicatorStateNotifyMask);
     XkbGetIndicatorState(inDpy, XkbUseCoreKbd, &n);
-    bit = (1 << (XkbNumIndicators - 1));
+    bit = (1U << (XkbNumIndicators - 1));
     for (i = XkbNumIndicators - 1; i >= 0; i--, bit >>= 1) {
         if (wanted & bit) {
             char buf[12];
