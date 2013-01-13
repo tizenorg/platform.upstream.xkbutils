@@ -102,13 +102,13 @@ extern void uFree(Opaque         /* ptr */);
 
 /***====================================================================***/
 
-extern Boolean uSetErrorFile(char *name);
-extern void uInformation(char *s, ...);
-extern void uAction(char *s, ...);
-extern void uWarning(char *s, ...);
-extern void uError(char *s, ...);
-extern void uFatalError(char *s, ...);
-extern void uInternalError(char *s, ...);
+extern Boolean uSetErrorFile(const char *name);
+extern void uInformation(const char *s, ...);
+extern void uAction(const char *s, ...);
+extern void uWarning(const char *s, ...);
+extern void uError(const char *s, ...);
+extern void uFatalError(const char *s, ...);
+extern void uInternalError(const char *s, ...);
 
 /***====================================================================***/
 
@@ -123,16 +123,16 @@ extern void uInternalError(char *s, ...);
 #define	uStrCaseCmp(s1,s2)	(strcasecmp(s1,s2))
 #define	uStrCasePrefix(p,s)	(strncasecmp(p,s,strlen(p))==0)
 #else
-extern int uStrCaseCmp(char *   /* s1 */,
-                       char *   /* s2 */);
+extern int uStrCaseCmp(const char *   /* s1 */,
+                       const char *   /* s2 */);
 
-extern int uStrCasePrefix(char * /* p */,
-                          char * /* str */);
+extern int uStrCasePrefix(const char * /* p */,
+                          const char * /* str */);
 #endif
 #ifdef HAVE_STRDUP
 #define	uStringDup(s1)		(strdup(s1))
 #else
-extern char *uStringDup(char *  /* s1 */);
+extern char *uStringDup(const char *  /* s1 */);
 #endif
 
 /***====================================================================***/
@@ -153,9 +153,9 @@ extern char *uStringDup(char *  /* s1 */);
 extern
 unsigned int DEBUG_VAR;
 
-extern void uDebug(char *s, ...);
-extern void uDebugNOI(char *s, ...);    /* no indent */
-extern Boolean uSetDebugFile(char *name);
+extern void uDebug(const char *s, ...);
+extern void uDebugNOI(const char *s, ...);    /* no indent */
+extern Boolean uSetDebugFile(const char *name);
 
 extern FILE *uDebugFile;
 extern int uDebugIndentLevel;
@@ -191,10 +191,10 @@ extern int uDebugIndentSize;
 #define	uDEBUG_NOI5(f,s,a,b,c,d,e)
 #endif
 
-extern Boolean uSetEntryFile(char *name);
+extern Boolean uSetEntryFile(const char *name);
 
-extern void uEntry(int l, char *s, ...);
-extern void uExit(int l, char *rtVal);
+extern void uEntry(int l, const char *s, ...);
+extern void uExit(int l, const char *rtVal);
 
 extern int uEntryLevel;
 
