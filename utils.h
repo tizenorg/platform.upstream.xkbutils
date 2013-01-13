@@ -42,10 +42,6 @@
 
 _XFUNCPROTOBEGIN
 
-#ifndef NUL
-#define	NUL	'\0'
-#endif
-
 /***====================================================================***/
 
 #ifndef BOOLEAN_DEFINED
@@ -56,17 +52,6 @@ typedef char Boolean;
 #define	True	((Boolean)1)
 #define	False	((Boolean)0)
 #endif                          /* ndef True */
-#define	booleanText(b)	((b)?"True":"False")
-
-#ifndef COMPARISON_DEFINED
-typedef int Comparison;
-
-#define	Greater		((Comparison)1)
-#define	Equal		((Comparison)0)
-#define	Less		((Comparison)-1)
-#define	CannotCompare	((Comparison)-37)
-#define	comparisonText(c)	((c)?((c)<0?"Less":"Greater"):"Equal")
-#endif
 
 /***====================================================================***/
 
@@ -82,10 +67,6 @@ extern void uInternalError(const char *s, ...) _X_ATTRIBUTE_PRINTF(1,2);
 
 #define	NullString	((char *)NULL)
 
-#define	uStringText(s)		((s)==NullString?"<NullString>":(s))
-#define	uStringEqual(s1,s2)	(uStringCompare(s1,s2)==Equal)
-#define	uStringPrefix(p,s)	(strncmp(p,s,strlen(p))==0)
-#define	uStringCompare(s1,s2)	(strcmp(s1,s2))
 #define	uStrCaseEqual(s1,s2)	(uStrCaseCmp(s1,s2)==0)
 #ifdef HAVE_STRCASECMP
 #define	uStrCaseCmp(s1,s2)	(strcasecmp(s1,s2))
