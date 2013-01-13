@@ -36,8 +36,6 @@
 
 #define	OPAQUE_DEFINED
 #define	BOOLEAN_DEFINED
-#define	DEBUG_VAR_NOT_LOCAL
-#define	DEBUG_VAR debugFlags
 #include "utils.h"
 #include "LED.h"
 
@@ -213,8 +211,6 @@ main(int argc, char *argv[])
         NULL
     };
 
-    uSetEntryFile(NullString);
-    uSetDebugFile(NullString);
     uSetErrorFile(NullString);
     bzero(leds, XkbNumIndicators * sizeof(Widget));
     toplevel = XtOpenApplication(&app_con, "XkbLEDPanel", NULL, 0, &argc, argv,

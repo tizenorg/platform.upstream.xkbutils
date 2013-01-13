@@ -29,8 +29,6 @@
 #include	<ctype.h>
 #include	<stdlib.h>
 
-unsigned int debugFlags;
-
 /***====================================================================***/
 
 Opaque
@@ -87,116 +85,7 @@ uFree(Opaque ptr)
 }
 
 /***====================================================================***/
-/***                  FUNCTION ENTRY TRACKING                           ***/
-/***====================================================================***/
-
-static FILE *entryFile = NULL;
-
-int uEntryLevel;
-
-Boolean
-uSetEntryFile(const char *name)
-{
-    if ((entryFile != NULL) && (entryFile != stderr)) {
-        fprintf(entryFile, "switching to %s\n", name ? name : "stderr");
-        fclose(entryFile);
-    }
-    if (name != NullString)
-        entryFile = fopen(name, "w");
-    else
-        entryFile = stderr;
-    if (entryFile == NULL) {
-        entryFile = stderr;
-        return (False);
-    }
-    return (True);
-}
-
-void
-uEntry(int l, const char *s, ...)
-{
-    int i;
-    va_list ap;
-
-    va_start(ap, s);
-    for (i = 0; i < uEntryLevel; i++) {
-        putc(' ', entryFile);
-    }
-    vfprintf(entryFile, s, ap);
-    uEntryLevel += l;
-    va_end(ap);
-    return;
-}
-
-void
-uExit(int l, const char *rtVal)
-{
-    int i;
-
-    uEntryLevel -= l;
-    if (uEntryLevel < 0)
-        uEntryLevel = 0;
-    for (i = 0; i < uEntryLevel; i++) {
-        putc(' ', entryFile);
-    }
-    fprintf(entryFile, "---> 0x%p\n", rtVal);
-    return;
-}
-
-/***====================================================================***/
 /***			PRINT FUNCTIONS					***/
-/***====================================================================***/
-
-FILE *uDebugFile = NULL;
-int uDebugIndentLevel = 0;
-int uDebugIndentSize = 4;
-
-Boolean
-uSetDebugFile(const char *name)
-{
-    if ((uDebugFile != NULL) && (uDebugFile != stderr)) {
-        fprintf(uDebugFile, "switching to %s\n", name ? name : "stderr");
-        fclose(uDebugFile);
-    }
-    if (name != NullString)
-        uDebugFile = fopen(name, "w");
-    else
-        uDebugFile = stderr;
-    if (uDebugFile == NULL) {
-        uDebugFile = stderr;
-        return (False);
-    }
-    return (True);
-}
-
-void
-uDebug(const char *s, ...)
-{
-    int i;
-    va_list ap;
-
-    va_start(ap, s);
-    for (i = (uDebugIndentLevel * uDebugIndentSize); i > 0; i--) {
-        putc(' ', uDebugFile);
-    }
-    vfprintf(uDebugFile, s, ap);
-    fflush(uDebugFile);
-    va_end(ap);
-    return;
-}
-
-void
-uDebugNOI(const char *s, ...)
-{
-    va_list ap;
-
-    va_start(ap, s);
-    vfprintf(uDebugFile, s, ap);
-    fflush(uDebugFile);
-    va_end(ap);
-    return;
-}
-
 /***====================================================================***/
 
 static FILE *errorFile = NULL;

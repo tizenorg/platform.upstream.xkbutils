@@ -36,8 +36,6 @@
 
 #define	OPAQUE_DEFINED
 #define	BOOLEAN_DEFINED
-#define	DEBUG_VAR_NOT_LOCAL
-#define	DEBUG_VAR debugFlags
 #include "utils.h"
 #include "LED.h"
 
@@ -82,8 +80,6 @@ main(int argc, char *argv[])
         NULL
     };
 
-    uSetEntryFile(NullString);
-    uSetDebugFile(NullString);
     uSetErrorFile(NullString);
     toplevel = XtOpenApplication(&app_con, "XkbWatch",
                                  options, XtNumber(options), &argc, argv,
