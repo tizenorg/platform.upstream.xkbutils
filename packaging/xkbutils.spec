@@ -1,3 +1,5 @@
+%bcond_with x
+
 Name:           xkbutils
 Version:        1.0.3
 Release:        0
@@ -14,6 +16,10 @@ BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xt)
+
+%if !%{with x}
+ExclusiveArch:
+%endif
 
 %description
 xkbutils is a collection of small utilities utilizing the XKeyboard
