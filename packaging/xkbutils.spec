@@ -1,7 +1,7 @@
 %bcond_with x
 
 Name:           xkbutils
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 License:        MIT
 Summary:        Collection of small utilities utilizing the X11 XKeyboard extension
@@ -35,7 +35,7 @@ It includes:
 cp %{SOURCE1001} .
 
 %build
-%configure
+%autogen
 make %{?_smp_mflags}
 
 %install
